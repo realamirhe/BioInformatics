@@ -102,7 +102,7 @@ def main():
         s = tuple(map(int, lines[i+1].split()))
 
         distances.append(reversal_distance(t, s))
-        print(" ".join(distance))
+        print(distances)
 
 if __name__ == '__main__':
     main()
