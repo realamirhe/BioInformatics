@@ -31,14 +31,14 @@ Sample Output
 from collections import deque
 
 
-def permutation_generator(string):
+def permutation_generator(sequence):
     """
-    Generate all permutation of an input string
+    Generate all permutation of an input sequence
     using generator for memory issue
     """
-    for i in range(len(string)):
-        for j in range(i + 2, len(string) + 1):
-            yield string[:i] + string[i:j][::-1] + string[j:]
+    for i in range(len(sequence)):
+        for j in range(i + 2, len(sequence) + 1):
+            yield sequence[:i] + sequence[i:j][::-1] + sequence[j:]
 
 
 def reversal_distance(per_1, per_2):
@@ -54,10 +54,10 @@ def reversal_distance(per_1, per_2):
     queue = deque((per_1, ))
     # TODO: review Deque docs for better implementation
     while len(queue):
-        string = queue.popleft()
-        cost = from_first[string]
+        sequence = queue.popleft()
+        cost = from_first[sequence]
 
-        for permutation in permutation_generator(string):
+        for permutation in permutation_generator(sequence):
             if permutation == target:
                 return cost + 1
             if not permutation in from_first:
@@ -70,14 +70,15 @@ def reversal_distance(per_1, per_2):
     queue = deque((per_2, ))
     answer = 10 ** 5
 
+    # TODO: DRY - nearly same code
     while len(queue):
-        string = queue.popleft()
-        cost = from_first[string]
+        sequence = queue.popleft()
+        cost = from_second[sequence]
 
         if cost == 4:
             break
 
-        for permutation in permutation_generator(string):
+        for permutation in permutation_generator(sequence):
             if permutation == target:
                 return cost + 1
             if not permutation in from_second:
@@ -97,10 +98,11 @@ def main():
     lines = file.readlines()
     samples = []
     for i in range(0, 13, 3):
-        t, s = map(int, lines[i].split()), map(int, lines[i+1].split())
+        t = tuple(map(int, lines[i].split()))
+        s = tuple(map(int, lines[i+1].split()))
 
         distances.append(reversal_distance(t, s))
-
+        print(distances)
 
 if __name__ == '__main__':
     main()
