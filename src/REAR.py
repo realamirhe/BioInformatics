@@ -96,7 +96,7 @@ def main():
     dataset = open("rear_dataset.txt", "r")
 
     lines = dataset.readlines()
-    for i in range(0, len(dataset), 3):
+    for i in range(0, len(lines), 3):
         per_1 = tuple(map(int, lines[i].split()))
         per_2 = tuple(map(int, lines[i+1].split()))
 
