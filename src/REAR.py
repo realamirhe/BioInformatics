@@ -93,16 +93,16 @@ def reversal_distance(per_1, per_2):
 
 def main():
     distances = []
-    file = open("test.txt", "r")
+    dataset = open("rear_dataset.txt", "r")
 
-    lines = file.readlines()
-    samples = []
-    for i in range(0, 13, 3):
-        t = tuple(map(int, lines[i].split()))
-        s = tuple(map(int, lines[i+1].split()))
+    lines = dataset.readlines()
+    for i in range(0, len(dataset), 3):
+        per_1 = tuple(map(int, lines[i].split()))
+        per_2 = tuple(map(int, lines[i+1].split()))
 
-        distances.append(reversal_distance(t, s))
-        print(distances)
+        distances.append(reversal_distance(per_1, per_2))
+
+    print(" ".join(map(str, distances)))
 
 if __name__ == '__main__':
     main()
