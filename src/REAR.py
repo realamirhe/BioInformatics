@@ -73,7 +73,7 @@ def reversal_distance(per_1, per_2):
     # TODO: DRY - nearly same code
     while len(queue):
         sequence = queue.popleft()
-        cost = from_first[sequence]
+        cost = from_second[sequence]
 
         if cost == 4:
             break
@@ -98,10 +98,11 @@ def main():
     lines = file.readlines()
     samples = []
     for i in range(0, 13, 3):
-        t, s = map(int, lines[i].split()), map(int, lines[i+1].split())
+        t = tuple(map(int, lines[i].split()))
+        s = tuple(map(int, lines[i+1].split()))
 
         distances.append(reversal_distance(t, s))
-
+        print(" ".join(distance))
 
 if __name__ == '__main__':
     main()
