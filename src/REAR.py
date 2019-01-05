@@ -50,7 +50,7 @@ def reversal_distance(per_1, per_2):
         return 0
 
     target = tuple(per_2)
-    from_first = { tuple(per_1): 0 }
+    from_first = {tuple(per_1): 0}
     queue = deque((per_1, ))
     # TODO: review Deque docs for better implementation
     while len(queue):
@@ -65,8 +65,7 @@ def reversal_distance(per_1, per_2):
                 if cost != 4:
                     queue.append(permutation)
 
-
-    target = { tuple(per_1): 0 }
+    target = {tuple(per_1): 0}
     from_second = {tuple(per_2): 0}
     queue = deque((per_2, ))
     answer = 10 ** 5
@@ -86,16 +85,21 @@ def reversal_distance(per_1, per_2):
                 if cost != 3:
                     queue.append(permutation)
             if permutation in from_first:
-                answer = min(answer, from_first[permutation] + from_second[permutation])
+                answer = min(
+                    answer, from_first[permutation] + from_second[permutation])
     return answer
 
+
 def main():
+    distances = []
     file = open("test.txt", "r")
 
     lines = file.readlines()
     samples = []
     for i in range(0, 13, 3):
-        samples += [[lines[i].split(), lines[i+1].split()]]
+        t, s = map(int, lines[i].split()), map(int, lines[i+1].split())
+
+        distances.append(reversal_distance(t, s))
 
 
 if __name__ == '__main__':
