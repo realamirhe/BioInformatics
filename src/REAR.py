@@ -90,7 +90,12 @@ def reversal_distance(per_1, per_2):
     return answer
 
 def main():
-    pass
+    file = open("test.txt", "r")
+
+    lines = file.readlines()
+    samples = []
+    for i in range(0, 13, 3):
+        samples += [[lines[i].split(), lines[i+1].split()]]
 
 
 if __name__ == '__main__':

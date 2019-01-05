@@ -1,2 +1,2 @@
-# Biology
-biology algorithms
+# BioInformatics
+bioinformatics algorithms
