@@ -75,7 +75,7 @@ def main():
         for j in range(i + len(p) - k, i + len(p) + k):
             d = h_ed(p, t[i:j])
             if d <= k:
-                print(i+1, j)
+                print(i+1, j - i)
 
 
 if __name__ == '__main__':
