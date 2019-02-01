@@ -72,7 +72,7 @@ def main():
     print(k, p, t)
 
     for i in range(len(t)):
-        for j in range(i + len(p)-2, i + len(p) + 2):
+        for j in range(i + len(p) - k, i + len(p) + k):
             d = h_ed(p, t[i:j])
             if d <= k:
                 print(i+1, j)
