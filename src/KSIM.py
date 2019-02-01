@@ -3,9 +3,9 @@ Parsa Yahoie 610395157
 AmirHossein Ebrahimi 610395070
 --------------------------------------------------------------------------------
 Problem [# http://rosalind.info/problems/ksim/]
-Given: A positive integer k (k≤50), a DNA string s_1 of length at most 5 kbp representing a motif, and a DNA string s_2 of length at most 50 kbp representing a genome.
+Given: A positive integer k (k≤50), a DNA string s of length at most 5 kbp representing a motif, and a DNA string t of length at most 50 kbp representing a genome.
 
-Return: All substrings s_2′ of s_2 such that the edit distance dE(s_1,s_2′) is less than or equal to k. Each substring should be encoded by a pair containing its location in s_2 followed by its length.
+Return: All substrings t′ of t such that the edit distance dE(s,t′) is less than or equal to k. Each substring should be encoded by a pair containing its location in t followed by its length.
 --------------------------------------------------------------------------------
 Sample Dataset
 2
