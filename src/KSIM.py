@@ -19,6 +19,8 @@ Sample Output
 """
 
 # h_ed = hjelmqvist_levenshtein_edit_distance
+
+
 def h_ed(s_1, s_2):
     """
     A fast and memory efficient implementation by Hjelmqvist, Sten
@@ -62,7 +64,18 @@ def h_ed(s_1, s_2):
 
 
 def main():
-    print(h_ed("ACGTACGTACGTACGT", "ACGACGTGACGACGCT"))
+    file = open("ksim_dataset.txt", "r")
+    lines = file.readlines()
+    k = int(lines[0])
+    p = lines[1][:-1]
+    t = lines[2][:-1]
+    print(k, p, t)
+
+    for i in range(len(t)):
+        for j in range(i + len(p) - k, min(i + len(p) + k, len(t)+1)):
+            d = h_ed(p, t[i:j])
+            if d <= k:
+                print(i+1, j - i)
 
 
 if __name__ == '__main__':
