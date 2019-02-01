@@ -18,26 +18,9 @@ Sample Output
 1 6
 """
 
-<<<<<<< HEAD
-
-def edit_distance():
-    pass
-
-
-def main():
-    file = open("test.txt", "r")
-    lines = file.readlines()
-    k = int(lines[0])
-    motif = lines[1]
-    dna = lines[2]
-
-    for i in range(len(dna)):
-        for j in range(i, len(dna)):
-            d = edit_distance(motif, dna[i:j+1])
-            if d <= k:
-                print(i, j)
-=======
 # h_ed = hjelmqvist_levenshtein_edit_distance
+
+
 def h_ed(s_1, s_2):
     """
     A fast and memory efficient implementation by Hjelmqvist, Sten
@@ -81,8 +64,18 @@ def h_ed(s_1, s_2):
 
 
 def main():
-    print(h_ed("ACGTACGTACGTACGT", "ACGACGTGACGACGCT"))
->>>>>>> 993fd0fdc5f50e5051b90f05fda07f0fd3153678
+    file = open("ksim_dataset.txt", "r")
+    lines = file.readlines()
+    k = int(lines[0])
+    p = lines[1][:-1]
+    t = lines[2][:-1]
+    print(k, p, t)
+
+    for i in range(len(t)):
+        for j in range(i + 1, i + len(p)+2):
+            d = h_ed(p, t[i:j])
+            if d <= k:
+                print(i+1, j)
 
 
 if __name__ == '__main__':
